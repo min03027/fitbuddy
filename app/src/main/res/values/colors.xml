@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Indigo Colors -->
+    <color name="indigo_500">#6366F1</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="indigo_700">#4338CA</color>
+    
+    <!-- Purple Colors -->
+    <color name="purple_600">#9333EA</color>
+    
+    <!-- Gray Colors -->
+    <color name="gray_200">#E5E7EB</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_700">#374151</color>
+    <color name="gray_900">#111827</color>
+    
+    <!-- Theme Colors -->
+    <color name="colorPrimary">#6366F1</color>
+    <color name="colorPrimaryDark">#4338CA</color>
+    <color name="colorAccent">#9333EA</color>
+</resources>
