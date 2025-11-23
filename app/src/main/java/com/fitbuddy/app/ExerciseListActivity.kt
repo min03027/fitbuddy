@@ -68,7 +68,11 @@ class ExerciseListActivity : AppCompatActivity() {
     
     private fun setupRecyclerView() {
         exerciseAdapter = ExerciseAdapter(exercises) { exercise ->
-            Toast.makeText(this, "${exercise.name} 시작!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ExerciseExecutionActivity::class.java).apply {
+                putExtra("EXERCISE_NAME", exercise.name)
+                putExtra("EXERCISE_DURATION", exercise.duration)
+            }
+            startActivity(intent)
         }
         
         binding.rvExercises.apply {
