@@ -27,6 +27,19 @@ data class LoginResponse(
     val message: String
 )
 
+data class UserInfoRequest(
+    val email: String,
+    val height_cm: Int,
+    val weight_kg: Double,
+    val gender: String,
+    val workout_goal: String
+)
+
+data class UserInfoResponse(
+    val success: Boolean,
+    val message: String
+)
+
 interface ApiService {
 
     @GET("/")
@@ -37,6 +50,11 @@ interface ApiService {
 
     @POST("/login")
     suspend fun login(@Body body: LoginRequest): LoginResponse
+
+    @POST("/user/info")
+    suspend fun updateUserInfo(
+        @Body request: UserInfoRequest
+    ): UserInfoResponse
 
     // 🔥 **이 부분이 없으면 오류 발생**
     @POST("/pose/analyze")

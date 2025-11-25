@@ -13,6 +13,9 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class WeightTrackerActivity : AppCompatActivity() {
     
@@ -37,13 +40,21 @@ class WeightTrackerActivity : AppCompatActivity() {
     
     private fun initializeWeightHistory() {
         weightHistory.clear()
-        weightHistory.add("11/25" to currentWeight)
-        weightHistory.add("11/26" to currentWeight + 0.5f)
-        weightHistory.add("11/27" to currentWeight - 0.3f)
-        weightHistory.add("11/28" to currentWeight - 0.8f)
-        weightHistory.add("11/29" to currentWeight - 1.2f)
-        weightHistory.add("11/30" to currentWeight - 1.5f)
-        weightHistory.add("오늘" to currentWeight)
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("MM/dd", Locale.getDefault())
+
+        // 오늘부터 과거 6일까지 (총 7일) 데이터 생성
+        for (i in 6 downTo 0) {
+            val day = calendar.clone() as Calendar
+            day.add(Calendar.DATE, -i)
+            val dateString = dateFormat.format(day.time)
+            
+            // 임의의 체중 변화 데이터 (실제 앱에서는 저장된 데이터 사용)
+            val randomChange = (-2..2).random() * 0.5f
+            val weight = if (i == 0) currentWeight else currentWeight + randomChange
+            
+            weightHistory.add(dateString to weight)
+        }
     }
     
     private fun setupListeners() {
@@ -112,7 +123,9 @@ class WeightTrackerActivity : AppCompatActivity() {
                 val weight = etWeight.text.toString().toFloatOrNull()
                 if (weight != null) {
                     currentWeight = weight
-                    weightHistory[weightHistory.size - 1] = "오늘" to weight
+                    // 마지막 날짜(오늘)의 체중 업데이트
+                    val todayDate = weightHistory.last().first
+                    weightHistory[weightHistory.size - 1] = todayDate to weight
                     updateUI()
                     setupChart()
                 }
