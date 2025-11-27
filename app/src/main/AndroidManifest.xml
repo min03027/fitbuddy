@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FitBuddy"
+        tools:targetApi="31">
+        
+        <!-- Signup Activity (시작 화면) -->
+        <activity
+            android:name=".SignupActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <!-- UserInfo Activity -->
+        <activity
+            android:name=".UserInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <!-- WeightTracker Activity -->
+        <activity
+            android:name=".WeightTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <!-- ExerciseCategory Activity -->
+        <activity
+            android:name=".ExerciseCategoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <!-- ExerciseList Activity -->
+        <activity
+            android:name=".ExerciseListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        
+        <!-- Chat Activity -->
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ExerciseExecution Activity -->
+        <activity
+            android:name=".ExerciseExecutionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>
